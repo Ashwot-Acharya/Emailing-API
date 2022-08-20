@@ -6,17 +6,14 @@ app = FastAPI()
 
 @app.get('/emailingapi/get/users/all')
 def getusers():
-    # do admin auth
     services.getallusers()
     
 @app.post('/emalingapi/post/users')
-def makeusers(user_data:schemas.user):
-    # make users
+def makeusers(user_data:schemas.User):
     return services.adduser(user_data)
 
 
 @app.post('emailingapi/post/sendemail/users')
-def sendemailtoall():
-    pass    
-    
+def sendemailtoall(email_data:schemas.EmailData):
+    return services.sendmail(email_data)
     

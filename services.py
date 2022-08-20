@@ -1,8 +1,8 @@
 import schemas 
-import models as _models
+from fastapi import Depends , HTTPException
+import models
 import connect 
-import sqlalchemy.orm as orm
-import fastapi as _fastapi 
+from sqlalchemy.orm import Session
 
 
 def get_db():
@@ -13,24 +13,12 @@ def get_db():
         db.close()
 
 
-def adduser(user_data:schemas.user ,db:orm.Session = get_db()):
-    try:
-        db.add(user_data)
+def adduser(user_data , db:Session = get_db()):
+   
+        db_user = models.User(name = user_data.name , email = user_data.email)
+        db.add(db_user)
         db.commit()
-        db.refresh(user_data)
         return {"success":f" User added {user_data.name}"}
-    except Exception as e:
-        raise _fastapi.HTTPException(422, "Error has occured")
-
-
-def getallusers():
-    pass    
-
-
-def removeuser(name , email):
-    pass
-
-
-def sendEmail(email):
-    # we need to get emails and send to this function one by one and then send email
+   
+def sendemail(email_data):
     pass
