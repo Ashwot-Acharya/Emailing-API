@@ -19,6 +19,20 @@ def adduser(user_data , db:Session = get_db()):
         db.add(db_user)
         db.commit()
         return {"success":f" User added {user_data.name}"}
-   
+
+        
 def sendemail(email_data):
     pass
+
+
+
+
+def getusers(user_id , db:Session= get_db()):
+   user = db.query( models.User.id == user_id ).first()
+
+   if (user == None):
+        return "user Not foud"
+   else:
+        return user
+
+        

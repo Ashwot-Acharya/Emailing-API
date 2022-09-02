@@ -16,4 +16,12 @@ def makeusers(user_data:schemas.User):
 @app.post('emailingapi/post/sendemail/users')
 def sendemailtoall(email_data:schemas.EmailData):
     return services.sendmail(email_data)
-    
+
+
+
+@app.get('/user/{user_id}')
+def user():
+    return services.getusers()
+
+
+
