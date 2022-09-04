@@ -27,12 +27,9 @@ def sendemail(email_data):
 
 
 
-def getusers(user_id , db:Session= get_db()):
-   user = db.query( models.User.id == user_id ).first()
-
-   if (user == None):
-        return "user Not foud"
-   else:
-        return user
+def getusers(user_id:int , db:Session= get_db()):
+    user = db.query( models.User).filter(models.User.id == user_id).first()
+    
+    return user
 
         

@@ -20,8 +20,8 @@ def sendemailtoall(email_data:schemas.EmailData):
 
 
 @app.get('/user/{user_id}')
-def user():
-    return services.getusers()
+def user(user_id):
+    return services.getusers(user_id)
 
 
 
