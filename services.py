@@ -25,11 +25,12 @@ def sendemail(email_data):
     pass
 
 
-
+def getallusers(db:Session = get_db()):
+    allusrs = db.query(models.User).all()
+    return allusrs
 
 def getusers(user_id:int , db:Session= get_db()):
     user = db.query( models.User).filter(models.User.id == user_id).first()
-    
     return user
 
         

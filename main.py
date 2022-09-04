@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get('/emailingapi/get/users/all')
 def getusers():
-    services.getallusers()
+    return services.getallusers()
     
 @app.post('/emalingapi/post/users')
 def makeusers(user_data:schemas.User):
