@@ -12,3 +12,10 @@ class EmailData(BaseModel):
     body : str
     class config:
         orm_mode = True
+
+class Admin(BaseModel):
+    name: str
+    emai: str
+    password : str
+    class config:
+        orm_mode = True

@@ -2,6 +2,7 @@ import schemas
 from fastapi import Depends , HTTPException
 import models
 import connect 
+import os
 from sqlalchemy.orm import Session
 
 
@@ -32,5 +33,8 @@ def getallusers(db:Session = get_db()):
 def getusers(user_id:int , db:Session= get_db()):
     user = db.query( models.User).filter(models.User.id == user_id).first()
     return user
+
+def CreateAdmin(admindata ,  password):
+    if ( password =  os. )
 
         
